@@ -2,3 +2,5 @@ Git-tools-mac
 
 Dependencies:
 GLFW
+
+Borrows largely from Residual and Residual-tools, which is covered by the GNU LGPL v2.1.
