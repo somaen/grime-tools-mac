@@ -49,7 +49,7 @@ class Grim {
 	GrimGameType _gameType;
 public:
 	GrimGameType getGameType() { return _gameType; }
-	bool getIsDemo() { }
+	bool getIsDemo() { return false; }
 	void killBitmap(Bitmap *b) {}
 	void registerBitmap(Bitmap *b) {}
 };

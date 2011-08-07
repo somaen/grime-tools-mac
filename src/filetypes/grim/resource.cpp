@@ -270,6 +270,7 @@ Costume *ResourceLoader::loadCostume(const Common::String &filename, Costume *pr
 	Costume *result = new Costume(filename, b->getData(), b->getLen(), prevCost);
 
 	return result;*/
+	return 0;
 }
 
 Font *ResourceLoader::loadFont(const Common::String &filename) {
@@ -284,6 +285,7 @@ Font *ResourceLoader::loadFont(const Common::String &filename) {
 	Font *result = new Font(filename, b->getData(), b->getLen());
 
 	return result;*/
+	return 0;
 }
 
 Material *ResourceLoader::loadMaterial(const Common::String &filename, CMap *c) {

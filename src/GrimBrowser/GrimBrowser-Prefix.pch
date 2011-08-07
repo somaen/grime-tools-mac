@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'GrimBrowser' target in the 'GrimBrowser' project
+//
+
+#ifdef __OBJC__
+	#import <Cocoa/Cocoa.h>
+#endif
