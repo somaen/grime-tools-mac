@@ -21,6 +21,7 @@
  */
 
 #include "common/archive.h"
+#include "common/filestream.h"
 #include "common/debug.h"
 #include "common/file.h"
 #include "common/fs.h"
@@ -46,13 +47,14 @@ bool File::open(const String &filename, Archive &archive) {
 
 	SeekableReadStream *stream = 0;
 
-	if ((stream = archive.createReadStreamForMember(filename))) {
+/*	if ((stream = archive.createReadStreamForMember(filename))) {
 		debug(8, "Opening hashed: %s", filename.c_str());
 	} else if ((stream = archive.createReadStreamForMember(filename + "."))) {
 		// WORKAROUND: Bug #1458388: "SIMON1: Game Detection fails"
 		// sometimes instead of "GAMEPC" we get "GAMEPC." (note trailing dot)
 		debug(8, "Opening hashed: %s.", filename.c_str());
-	}
+	}*/
+	stream = createFileStreamForFileName(filename.c_str());
 
 	return open(stream, filename);
 }
