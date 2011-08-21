@@ -19,7 +19,31 @@
  *
  */
 
+#include <Cocoa/Cocoa.h>
+#include "filetypes/grim/lab.h"
+#import "LabArchive.h"
+#import "GrimGL.h"
 
-@interface LabTable : NSObject <NSTableViewDelegate>
+@interface LabTable : NSObject <NSTableViewDelegate, NSTableViewDataSource> {
+	LabArchive *labArchive;
+	NSString *_labFileName;
+	IBOutlet GrimGL *glHandler;
+	IBOutlet NSTextView *_textView;
+	IBOutlet NSTableView *_tableView;
+	IBOutlet NSTextField *_name;
+	IBOutlet NSTextField *_labName;
+	IBOutlet NSTextField *_size;
+	IBOutlet NSTextField *_type;
+}
+- (void)loadLabFile: (NSString *)filename;
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView;
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex;
 
+// Delegate
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification;
+
+// View-stuff
+- (void)updateTextFieldsWithIndex:(int)index;
+- (IBAction)openLab:(id)sender;
+- (IBAction)renderThis:(id)sender;
 @end
