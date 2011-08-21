@@ -61,7 +61,9 @@ public:
 	Common::File *openNewStreamFile(const Common::String &filename) const;
 	LuaFile *openNewStreamLua(const Common::String &filename) const;
 	int getFileLength(const Common::String &filename) const;
-
+	int getNumEntries() { return _entries.size(); }
+	Common::String getEntryNumName(int num);
+	int getEntryNumLen(int num);
 	~Lab() { close(); }
 
 	struct LabEntry {
@@ -74,6 +76,7 @@ private:
 
 	Common::File *_f;
 	typedef Common::HashMap<Common::String, LabEntry, Common::IgnoreCase_Hash, Common::IgnoreCase_EqualTo> LabMap;
+	Common::Array<Common::String> _indexes;
 	LabMap _entries;
 	Common::String _labFileName;
 };

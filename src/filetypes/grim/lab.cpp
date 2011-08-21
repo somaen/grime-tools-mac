@@ -53,6 +53,16 @@ bool Lab::open(const Common::String &filename) {
 
 	return true;
 }
+	
+Common::String Lab::getEntryNumName(int num) {
+	Common::String index = _indexes[num];
+	
+	return index;
+}
+	
+int Lab::getEntryNumLen(int num) {
+	return _entries[getEntryNumName(num)].len;
+}
 
 void Lab::parseGrimFileTable() {
 	uint32 entryCount = _f->readUint32LE();
@@ -76,6 +86,7 @@ void Lab::parseGrimFileTable() {
 		entry.len = size;
 
 		_entries[fname] = entry;
+		_indexes.push_back(fname);
 	}
 
 	delete[] stringTable;
@@ -116,6 +127,7 @@ void Lab::parseMonkey4FileTable() {
 		entry.len = size;
 
 		_entries[fname] = entry;
+		_indexes.push_back(fname);
 	}
 
 	delete[] stringTable;
@@ -176,7 +188,7 @@ int Lab::getFileLength(const Common::String &filename) const {
 void Lab::close() {
 	delete _f;
 	_f = NULL;
-
+	//	_indexes.clear();
 	_entries.clear();
 }
 
